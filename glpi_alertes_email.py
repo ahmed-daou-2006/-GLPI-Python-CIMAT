@@ -8,16 +8,21 @@ from email.mime.text import MIMEText
 from datetime import datetime, timezone
 
 # ── Config GLPI ───────────────────────────────────────────
-GLPI_URL   = "http://192.168.112.129/glpi"
-APP_TOKEN  = "Qzqd9JxK0k9vcF9daXxT4zIJKZGht2r20pHgaYR4"
-USER_TOKEN = "gMJqxaSdpy79c9HQout8reOo1PBY0UfM15FkQGYs"
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-# ── Config Email ──────────────────────────────────────────
-SMTP_SERVER   = "smtp.gmail.com"
-SMTP_PORT     = 587
-EMAIL_EXPEDITEUR  = "ahmeddaou2006@gmail.com"       # ← Ton Gmail
-EMAIL_MOT_PASSE   = "edmq idff wylc rrva"    # ← App Password Gmail
-EMAIL_DESTINATAIRE = "ahmeddaou2006@gmail.com"     # ← Email du responsable
+# ===== CONFIG GLPI =====
+GLPI_URL   = os.getenv("GLPI_URL")
+APP_TOKEN  = os.getenv("APP_TOKEN")
+USER_TOKEN = os.getenv("USER_TOKEN")
+
+# ===== CONFIG Email =====
+SMTP_SERVER        = "smtp.gmail.com"
+SMTP_PORT          = 587
+EMAIL_EXPEDITEUR   = os.getenv("GMAIL_USER")
+EMAIL_MOT_PASSE    = os.getenv("GMAIL_PASSWORD")
+EMAIL_DESTINATAIRE = os.getenv("GMAIL_USER")
 
 # Seuil : tickets ouverts depuis plus de X heures → alerte
 SEUIL_HEURES = 0
