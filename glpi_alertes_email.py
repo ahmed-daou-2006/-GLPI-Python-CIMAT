@@ -42,7 +42,7 @@ def connect_glpi():
     r = requests.get(f"{GLPI_URL}/apirest.php/initSession", headers=headers)
     data = r.json()
     if isinstance(data, list) or "session_token" not in data:
-        print(f"❌ Erreur connexion : {data}")
+        print(f" Erreur connexion : {data}")
         return None
     print(f" Connecté — Session : {data['session_token'][:12]}…")
     return data["session_token"]
@@ -75,7 +75,7 @@ def get_tickets_non_resolus(session_token):
         params=params
     )
     if r.status_code != 200:
-        print(f"❌ Erreur : {r.text}")
+        print(f" Erreur : {r.text}")
         return []
 
     tous_tickets = r.json()
